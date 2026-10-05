@@ -1,13 +1,12 @@
+import "./App.css";
+import Dashboard from "./pages/Dashboard";
+
 function App() {
   return (
     <div>
-      <h1>Smart Soil Assessment System</h1>
-
-      <h2>IoT-enabled Soil Fertility & Nutrient Prediction</h2>
-
-      <p>IT23247154</p>
+      <Dashboard />
     </div>
   );
 }
 
-export default App;
+export default App;cd

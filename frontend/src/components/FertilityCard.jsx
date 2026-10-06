@@ -1,8 +1,13 @@
 function FertilityCard({ status }) {
   return (
-    <div>
-      <h3>Overall Soil Fertility</h3>
-      <h1>{status}</h1>
+    <div className="fertility-card">
+      <p>Overall Soil Fertility</p>
+
+      <h2>{status}</h2>
+
+      <p>
+        Based on the current soil sensor and analysis data
+      </p>
     </div>
   );
 }

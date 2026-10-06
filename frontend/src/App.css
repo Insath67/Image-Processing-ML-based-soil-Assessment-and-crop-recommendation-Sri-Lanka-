@@ -1,15 +1,241 @@
-body {
-  padding: 30px;
+/* ================================
+   Dashboard
+================================ */
+
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-h1 {
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.dashboard-header h1 {
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.dashboard-header p {
+  color: #666;
+}
+
+.device-online {
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+
+/* Sample Information */
+
+.sample-info {
+  background: white;
+  border: 1px solid #e1e5e1;
+  border-radius: 10px;
+  padding: 20px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  margin-bottom: 30px;
+}
+
+.sample-info div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.sample-info span {
+  font-size: 13px;
+  color: #777;
+}
+
+.sample-info strong {
+  font-size: 16px;
+}
+
+
+/* Section title */
+
+.section-title {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+
+/* Sensor Cards */
+
+.sensor-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(200px, 1fr));
+
+  gap: 18px;
+}
+
+.sensor-card {
+  background: white;
+  border: 1px solid #e1e5e1;
+  border-radius: 12px;
+  padding: 20px;
+  transition: 0.2s;
+}
+
+.sensor-card:hover {
+  transform: translateY(-3px);
+}
+
+.sensor-name {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.sensor-value {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.sensor-unit {
+  font-size: 14px;
+  font-weight: normal;
+  color: #777;
+}
+
+.sensor-status {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #2e7d32;
+}
+
+
+/* Fertility Card */
+
+.fertility-card {
+  background: white;
+  border: 1px solid #e1e5e1;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+}
+
+.fertility-card h2 {
+  font-size: 36px;
+  margin: 10px 0;
+  color: #ef6c00;
+}
+
+.fertility-card p {
+  color: #666;
+}
+
+
+/* Nutrient Status */
+
+.nutrient-section {
+  background: white;
+  border: 1px solid #e1e5e1;
+  border-radius: 12px;
+  padding: 25px;
+  margin-top: 25px;
+}
+
+.nutrient-section h2 {
   margin-bottom: 15px;
 }
 
-h2 {
-  margin-top: 20px;
+.nutrient-row {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 14px 0;
+
+  border-bottom: 1px solid #eee;
 }
 
-p {
-  margin-top: 10px;
+.nutrient-row:last-child {
+  border-bottom: none;
+}
+
+
+/* Dashboard Buttons */
+
+.dashboard-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+  margin-bottom: 40px;
+}
+
+.primary-button,
+.secondary-button {
+  padding: 12px 20px;
+  border-radius: 7px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.primary-button {
+  background: #2e7d32;
+  color: white;
+}
+
+.primary-button:hover {
+  background: #256628;
+}
+
+.secondary-button {
+  background: white;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.secondary-button:hover {
+  background: #f1f1f1;
+}
+
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .sample-info {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .dashboard-actions {
+    flex-direction: column;
+  }
+aside {
+  width: 220px;
+  min-height: 100vh;
+  padding: 25px;
+  background-color: #ffffff;
+  position: fixed;
+  left: 0;
+  top: 0;
+  border-right: 1px solid #ddd;
+}
+
+main {
+  margin-left: 220px;
+  padding: 30px;
+  
+}
 }

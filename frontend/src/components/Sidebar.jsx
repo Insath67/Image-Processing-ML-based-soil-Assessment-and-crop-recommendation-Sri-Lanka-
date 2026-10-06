@@ -1,36 +1,76 @@
 import { NavLink } from "react-router-dom";
+import {
+  LayoutDashboard,
+  FlaskConical,
+  History,
+  Cpu,
+  Sprout
+} from "lucide-react";
 
 function Sidebar() {
-
-  const linkStyle = ({ isActive }) => ({
-    backgroundColor: isActive ? "#e8f5e9" : "transparent",
-    fontWeight: isActive ? "bold" : "normal",
-  });
-
   return (
-    <aside>
+    <aside className="sidebar">
 
-      <h2>Smart Soil</h2>
+      <div className="sidebar-logo">
+        <div className="logo-icon">
+          <Sprout size={25} />
+        </div>
 
-      <nav>
+        <div>
+          <h2>Smart Soil</h2>
+          <p>Assessment System</p>
+        </div>
+      </div>
 
-        <NavLink to="/" style={linkStyle}>
-          Dashboard
+      <nav className="sidebar-nav">
+
+        <NavLink
+          to="/"
+          end
+          className={({ isActive }) =>
+            isActive ? "nav-item active" : "nav-item"
+          }
+        >
+          <LayoutDashboard size={20} />
+          <span>Dashboard</span>
         </NavLink>
 
-        <NavLink to="/analysis" style={linkStyle}>
-          New Analysis
+        <NavLink
+          to="/analysis"
+          className={({ isActive }) =>
+            isActive ? "nav-item active" : "nav-item"
+          }
+        >
+          <FlaskConical size={20} />
+          <span>New Analysis</span>
         </NavLink>
 
-        <NavLink to="/history" style={linkStyle}>
-          History
+        <NavLink
+          to="/history"
+          className={({ isActive }) =>
+            isActive ? "nav-item active" : "nav-item"
+          }
+        >
+          <History size={20} />
+          <span>History</span>
         </NavLink>
 
-        <NavLink to="/device" style={linkStyle}>
-          Device Status
+        <NavLink
+          to="/device"
+          className={({ isActive }) =>
+            isActive ? "nav-item active" : "nav-item"
+          }
+        >
+          <Cpu size={20} />
+          <span>Device Status</span>
         </NavLink>
 
       </nav>
+
+      <div className="sidebar-footer">
+        <p>Research Project</p>
+        <strong>IT23247154</strong>
+      </div>
 
     </aside>
   );

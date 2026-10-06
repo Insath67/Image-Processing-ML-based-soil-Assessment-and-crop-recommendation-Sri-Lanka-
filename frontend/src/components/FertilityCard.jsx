@@ -1,13 +1,34 @@
+import { Sprout } from "lucide-react";
+
 function FertilityCard({ status }) {
+
+  const statusClass =
+    status.toLowerCase();
+
   return (
     <div className="fertility-card">
-      <p>Overall Soil Fertility</p>
 
-      <h2>{status}</h2>
+      <div className="fertility-icon">
+        <Sprout size={32} />
+      </div>
 
-      <p>
-        Based on the current soil sensor and analysis data
-      </p>
+      <div>
+        <p className="fertility-label">
+          Overall Soil Fertility
+        </p>
+
+        <h2
+          className={`fertility-value ${statusClass}`}
+        >
+          {status}
+        </h2>
+
+        <p className="fertility-description">
+          Current fertility assessment based on
+          available soil measurements.
+        </p>
+      </div>
+
     </div>
   );
 }

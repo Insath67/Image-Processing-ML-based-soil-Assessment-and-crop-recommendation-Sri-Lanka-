@@ -1,9 +1,22 @@
 import { Link } from "react-router-dom";
 
+import {
+  FlaskConical,
+  Droplets,
+  Thermometer,
+  Zap,
+  Leaf,
+  MapPin,
+  CalendarDays
+} from "lucide-react";
+
 import SensorCard from "../components/SensorCard";
 import FertilityCard from "../components/FertilityCard";
 
 function Dashboard() {
+
+  // Temporary frontend test data.
+  // Later this will come from the backend API.
 
   const soilData = {
     sampleId: "KG-001",
@@ -31,130 +44,264 @@ function Dashboard() {
   return (
     <div className="dashboard">
 
-      <div className="dashboard-header">
+      {/* Page heading */}
+
+      <div className="page-heading">
+
         <div>
           <h1>Soil Fertility Dashboard</h1>
+
           <p>
-            Latest soil measurements and fertility status
+            Monitor the latest soil measurements
+            and fertility assessment.
           </p>
         </div>
 
-        <div className="device-online">
-          ● Device Online
-        </div>
-      </div>
-
-      <div className="sample-info">
-        <div>
-          <span>Sample ID</span>
-          <strong>{soilData.sampleId}</strong>
-        </div>
-
-        <div>
-          <span>Location</span>
-          <strong>{soilData.location}</strong>
-        </div>
-
-        <div>
-          <span>Date</span>
-          <strong>{soilData.date}</strong>
-        </div>
-      </div>
-
-      <h2 className="section-title">
-        Soil Measurements
-      </h2>
-
-      <div className="sensor-grid">
-
-        <SensorCard
-          name="pH"
-          value={soilData.ph}
-          status="Suitable"
-        />
-
-        <SensorCard
-          name="Nitrogen (N)"
-          value={soilData.nitrogen}
-          unit="mg/kg"
-          status="Sufficient"
-        />
-
-        <SensorCard
-          name="Phosphorus (P)"
-          value={soilData.phosphorus}
-          unit="mg/kg"
-          status="Deficient"
-        />
-
-        <SensorCard
-          name="Potassium (K)"
-          value={soilData.potassium}
-          unit="mg/kg"
-          status="Sufficient"
-        />
-
-        <SensorCard
-          name="Moisture"
-          value={soilData.moisture}
-          unit="%"
-        />
-
-        <SensorCard
-          name="Temperature"
-          value={soilData.temperature}
-          unit="°C"
-        />
-
-        <SensorCard
-          name="Electrical Conductivity"
-          value={soilData.ec}
-          unit="mS/cm"
-        />
+        <Link
+          to="/analysis"
+          className="primary-button"
+        >
+          + New Analysis
+        </Link>
 
       </div>
 
-      <h2 className="section-title">
-        Fertility Assessment
-      </h2>
 
-      <FertilityCard
-        status={soilData.fertility}
-      />
+      {/* Latest Sample */}
 
-      <div className="nutrient-section">
+      <section className="dashboard-section">
 
-        <h2>Nutrient Status</h2>
-
-        <div className="nutrient-row">
-          <span>Nitrogen</span>
-          <strong>
-            {soilData.nutrientStatus.nitrogen}
-          </strong>
+        <div className="section-heading">
+          <div>
+            <h2>Latest Soil Sample</h2>
+            <p>Most recent soil measurement</p>
+          </div>
         </div>
 
-        <div className="nutrient-row">
-          <span>Phosphorus</span>
-          <strong>
-            {soilData.nutrientStatus.phosphorus}
-          </strong>
+
+        <div className="sample-summary">
+
+          <div className="sample-id-box">
+
+            <span>Sample ID</span>
+
+            <strong>
+              {soilData.sampleId}
+            </strong>
+
+          </div>
+
+
+          <div className="sample-detail">
+
+            <MapPin size={18} />
+
+            <div>
+              <span>Location</span>
+              <strong>
+                {soilData.location}
+              </strong>
+            </div>
+
+          </div>
+
+
+          <div className="sample-detail">
+
+            <CalendarDays size={18} />
+
+            <div>
+              <span>Date</span>
+              <strong>
+                {soilData.date}
+              </strong>
+            </div>
+
+          </div>
+
         </div>
 
-        <div className="nutrient-row">
-          <span>Potassium</span>
-          <strong>
-            {soilData.nutrientStatus.potassium}
-          </strong>
+      </section>
+
+
+      {/* Measurements */}
+
+      <section className="dashboard-section">
+
+        <div className="section-heading">
+
+          <div>
+            <h2>Soil Measurements</h2>
+
+            <p>
+              Latest IoT sensor readings
+            </p>
+          </div>
+
         </div>
 
-        <div className="nutrient-row">
-          <span>pH</span>
-          <strong>
-            {soilData.nutrientStatus.ph}
-          </strong>
+
+        <div className="sensor-grid">
+
+          <SensorCard
+            name="Soil pH"
+            value={soilData.ph}
+            status="Suitable"
+            icon={<FlaskConical size={23} />}
+          />
+
+          <SensorCard
+            name="Nitrogen (N)"
+            value={soilData.nitrogen}
+            unit=" mg/kg"
+            status="Sufficient"
+            icon={<Leaf size={23} />}
+          />
+
+          <SensorCard
+            name="Phosphorus (P)"
+            value={soilData.phosphorus}
+            unit=" mg/kg"
+            status="Deficient"
+            icon={<Leaf size={23} />}
+          />
+
+          <SensorCard
+            name="Potassium (K)"
+            value={soilData.potassium}
+            unit=" mg/kg"
+            status="Sufficient"
+            icon={<Leaf size={23} />}
+          />
+
+          <SensorCard
+            name="Moisture"
+            value={soilData.moisture}
+            unit="%"
+            icon={<Droplets size={23} />}
+          />
+
+          <SensorCard
+            name="Temperature"
+            value={soilData.temperature}
+            unit=" °C"
+            icon={<Thermometer size={23} />}
+          />
+
+          <SensorCard
+            name="Electrical Conductivity"
+            value={soilData.ec}
+            unit=" mS/cm"
+            icon={<Zap size={23} />}
+          />
+
         </div>
 
-      </div>
+      </section>
+
+
+      {/* Fertility */}
+
+      <section className="dashboard-section">
+
+        <div className="section-heading">
+          <div>
+            <h2>Fertility Assessment</h2>
+
+            <p>
+              Overall fertility status of the
+              latest soil sample
+            </p>
+          </div>
+        </div>
+
+        <FertilityCard
+          status={soilData.fertility}
+        />
+
+      </section>
+
+
+      {/* Nutrient status */}
+
+      <section className="dashboard-section">
+
+        <div className="section-heading">
+
+          <div>
+            <h2>Nutrient Status</h2>
+
+            <p>
+              Current nutrient condition
+            </p>
+          </div>
+
+        </div>
+
+
+        <div className="nutrient-table">
+
+          <div className="nutrient-row">
+
+            <div>
+              <strong>Nitrogen (N)</strong>
+              <span>{soilData.nitrogen} mg/kg</span>
+            </div>
+
+            <span className="status-badge sufficient">
+              {soilData.nutrientStatus.nitrogen}
+            </span>
+
+          </div>
+
+
+          <div className="nutrient-row">
+
+            <div>
+              <strong>Phosphorus (P)</strong>
+              <span>{soilData.phosphorus} mg/kg</span>
+            </div>
+
+            <span className="status-badge deficient">
+              {soilData.nutrientStatus.phosphorus}
+            </span>
+
+          </div>
+
+
+          <div className="nutrient-row">
+
+            <div>
+              <strong>Potassium (K)</strong>
+              <span>{soilData.potassium} mg/kg</span>
+            </div>
+
+            <span className="status-badge sufficient">
+              {soilData.nutrientStatus.potassium}
+            </span>
+
+          </div>
+
+
+          <div className="nutrient-row">
+
+            <div>
+              <strong>Soil pH</strong>
+              <span>{soilData.ph}</span>
+            </div>
+
+            <span className="status-badge suitable">
+              {soilData.nutrientStatus.ph}
+            </span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* Buttons */}
 
       <div className="dashboard-actions">
 
@@ -162,14 +309,14 @@ function Dashboard() {
           to="/analysis"
           className="primary-button"
         >
-          New Soil Analysis
+          Start New Analysis
         </Link>
 
         <Link
           to="/history"
           className="secondary-button"
         >
-          View History
+          View Analysis History
         </Link>
 
       </div>

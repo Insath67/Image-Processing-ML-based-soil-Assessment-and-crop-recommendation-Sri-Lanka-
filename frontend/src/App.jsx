@@ -1,4 +1,8 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
 
 import Dashboard from "./pages/Dashboard";
 import NewAnalysis from "./pages/NewAnalysis";
@@ -7,6 +11,7 @@ import History from "./pages/History";
 import DeviceStatus from "./pages/DeviceStatus";
 
 import Sidebar from "./components/Sidebar";
+import Navbar from "./components/Navbar";
 
 import "./App.css";
 
@@ -16,36 +21,44 @@ function App() {
 
       <Sidebar />
 
-      <main>
-        <Routes>
+      <div className="app-content">
 
-          <Route
-            path="/"
-            element={<Dashboard />}
-          />
+        <Navbar />
 
-          <Route
-            path="/analysis"
-            element={<NewAnalysis />}
-          />
+        <main className="main-content">
 
-          <Route
-            path="/result/:id"
-            element={<AnalysisResult />}
-          />
+          <Routes>
 
-          <Route
-            path="/history"
-            element={<History />}
-          />
+            <Route
+              path="/"
+              element={<Dashboard />}
+            />
 
-          <Route
-            path="/device"
-            element={<DeviceStatus />}
-          />
+            <Route
+              path="/analysis"
+              element={<NewAnalysis />}
+            />
 
-        </Routes>
-      </main>
+            <Route
+              path="/result/:id"
+              element={<AnalysisResult />}
+            />
+
+            <Route
+              path="/history"
+              element={<History />}
+            />
+
+            <Route
+              path="/device"
+              element={<DeviceStatus />}
+            />
+
+          </Routes>
+
+        </main>
+
+      </div>
 
     </BrowserRouter>
   );
